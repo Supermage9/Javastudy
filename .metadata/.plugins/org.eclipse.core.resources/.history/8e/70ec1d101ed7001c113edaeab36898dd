@@ -1,0 +1,12 @@
+package com.classex;
+
+public class ClassExam01 {
+
+	public static void main(String[] args) {
+		
+		ClassExam ce = new ClassExam();
+		c
+		
+	}
+
+}

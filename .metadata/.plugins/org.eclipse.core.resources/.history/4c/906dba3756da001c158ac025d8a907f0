@@ -1,0 +1,47 @@
+package com.inherex01;
+
+
+
+class AClass{
+	protected int x,y; //두개의 정수
+	protected char ch; //연산자
+	
+	public AClass() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public void write(double result) {
+		System.out.printf("%d %c %d = %.2f",x,ch,y,result);
+	}
+	
+}
+
+
+class BClass extends AClass{
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public class InherExam02 {
+	
+
+	public static void main(String[] args) {
+		
+		
+		
+		
+	}
+
+}

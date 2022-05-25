@@ -1,0 +1,25 @@
+package com.poly;
+
+public class Tiger {
+	
+	private String name;
+	
+	public tiger() {
+		name = getClass().getSimpleName();
+	}
+	
+	@Override
+	public String scream() {
+		// TODO Auto-generated method stub
+		return "æÓ»Ô";
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+}

@@ -1,0 +1,54 @@
+package com.array;
+
+import java.io.*;
+import java.util.*;
+
+public class ArrayTest {
+
+	public static void main(String[] args)throws IOException{
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		String name = "";
+		int[]jumin = new int [14];
+		boolean right = false;
+		
+		System.out.print("이름 입력 :");
+		name = br.readLine();
+		
+		do {
+			right = false;
+			System.out.println("주민번호 입력(ex:123456-1234567) :");
+			for(int i=0;i<jumin.length;i++) {
+				jumin[i] = System.in.read()-48;
+			}
+			System.in.skip(2);
+			
+			if(jumin[2]*10+jumin[3]>12) {
+				System.out.println("태어난 달은 12월보다 클 수 없습니다.");
+				continue;
+			}else if(jumin[4]*10+jumin[5]>31) {
+				System.out.println("태어난 일은 31일보다 클 수 없습니다.");
+				continue;
+			}else if(jumin[7]!=9 && jumin[7]!=1&& jumin[7]!=3&& jumin[7]!=0&& jumin[7]!=2&& jumin[7]!=4) {
+				System.out.println("성별을 판별하는 숫자는");
+				System.out.println("9,0,1,2,3,4 중 하나여야 합니다.");
+				
+				continue;
+			}
+			
+			
+			right = true;
+		}while(right);
+		
+		
+		
+		
+		
+		
+		
+		
+
+	}
+
+}

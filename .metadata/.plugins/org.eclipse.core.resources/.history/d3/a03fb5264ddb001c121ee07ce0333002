@@ -1,0 +1,29 @@
+package study;
+
+
+class Card{
+	String kind;
+	int num;
+	
+	static int width;
+	static int height;
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+public class Iv {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

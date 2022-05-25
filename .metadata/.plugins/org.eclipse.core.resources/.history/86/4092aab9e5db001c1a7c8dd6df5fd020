@@ -1,0 +1,25 @@
+package com.star;
+
+public class Marine extends Unit {
+
+	@Override
+	void move(int x, int y) {
+		System.out.println("마린의 위치 이동 좌표는 x:"+x+",y"+y+"입니다.");
+	}
+
+	@Override
+	void stop() {
+		
+	}
+
+	@Override
+	void message() {
+		
+	}
+	
+	void stimPack() {
+		
+	}
+	
+
+}

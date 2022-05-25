@@ -1,0 +1,24 @@
+package com.star;
+
+public class Dropship extends Unit{
+
+	@Override
+	void move(int x, int y) {
+		
+	}
+
+	@Override
+	void stop() {
+		System.out.println("Take it slow. Dropship");
+	}
+
+	@Override
+	void message() {
+		
+	}
+	
+	
+	
+	
+
+}

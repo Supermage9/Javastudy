@@ -1,0 +1,29 @@
+package com.methodex;
+
+public class OverloadingEx02 {
+
+	public void getLength(int n) {
+	
+		
+	}
+	
+	public void getLength(float n) {
+	
+		
+	}
+	
+	public void getLength(String str) {
+	
+		
+	}
+	public static void main(String[] args) {
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}

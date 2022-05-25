@@ -1,0 +1,22 @@
+package com.methodex;
+
+import java.io.*;
+
+public class MethodEx06 {
+	
+	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	
+
+	public static void main(String[] args)throws IOException{
+		
+		int kor = 30;
+		System.out.println("당신의 국어 점수는 "+kor+"점 입니다.");
+		
+		
+		
+		
+		
+		
+	}
+
+}

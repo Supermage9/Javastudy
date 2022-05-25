@@ -1,0 +1,42 @@
+package com.test;
+
+//가위바위보 간단버젼
+
+import java.util.*;
+
+public class Test04_1 {
+
+	public static void main(String[] args) {
+		
+		
+		Scanner sc = new Scanner(System.in);
+		String[] str= {"가위","바위","보"};
+		
+		Random rd = new Random();
+		
+		int com = rd.nextInt(3)+1;
+		
+		int user;
+		
+		do {
+			System.out.print("1:가위 2:바위 3:보 중 입력 :");
+			user = sc.nextInt();
+		}while(user<1||user>3);
+		
+		System.out.println("사용자 :"+str[user-1]);
+		System.out.println("컴퓨터 :"+str[com-1]);
+		
+		String result;
+		result = "무승부";
+		
+		if((user==1&&com==3)||(user==2&&com==1)||(user==3&&com==2)) {
+			result="사용자가 승리하였습니다";
+		}
+		if((user==1&&com==2)||(user==2&&com==3)||(user==3&&com==1)) {
+			result="컴퓨터가 승리하였습니다";
+		}
+		System.out.println("최종 승부 결과\n"+result);
+
+	}
+
+}

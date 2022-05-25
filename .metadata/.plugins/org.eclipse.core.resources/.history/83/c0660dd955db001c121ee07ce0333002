@@ -1,0 +1,22 @@
+package ivexam;
+
+
+class cal{
+	
+	public int add(int a,int b) {
+		return a + b;
+	}
+	
+}
+
+
+
+
+public class MethodEx {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
