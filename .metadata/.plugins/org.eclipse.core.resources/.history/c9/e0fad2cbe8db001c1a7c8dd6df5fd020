@@ -1,7 +1,0 @@
-package com.inter;
-
-public interface InterEx {
-	
-	static final int a = 100;
-
-}
