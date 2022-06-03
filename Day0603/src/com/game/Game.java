@@ -1,53 +1,7 @@
-package study;
+package com.game;
 
-import java.util.*;
+import java.util.Scanner;
 
-public class GoldGame {
-    public static void main(String[] args) {
-        Game obj = new Game();
-        do {
-            obj.init();
-            obj.print();
-            obj.move();
-        }while(obj.c!='o' && !obj.getGold(obj.mnstr) && !obj.getGold(obj.user) && !obj.attackMonster());
-        obj.endprint();
-    }
-}
- 
-abstract class Sprite {
-    int x=3; int y=3;
-    int oldx, oldy;
-    void previous() {
-        oldx = x;
-        oldy = y;
-    }
-    abstract void move(char c);
-}
- 
-class Main extends Sprite { 
-    void move(char c) {
-        previous();
-        if(c=='w') --x;
-        else if(c=='a') --y;
-        else if(c=='d') ++y;
-        else if(c=='s') ++x;
-        Game.invalidMove(this);
-    }
-}
- 
-class Monster extends Sprite {
-    public Monster() {
-        x = y = (int)Math.random()*8+1;
-    }
-    void move(char c) {
-        previous();
-        double d = Math.random();
-        x += (d-0.25)>0? 1: -1;
-        y +=(d-0.75)>0? 1:-1;
-        Game.invalidMove(this);
-    }
-}
- 
 class Game {
     Scanner sc = new Scanner(System.in);
     static char[][] board = new char[10][19]; 
@@ -136,4 +90,3 @@ class Game {
         if(attackMonster()) System.out.println("monster ATTACKED you!");
     }
 }
-
