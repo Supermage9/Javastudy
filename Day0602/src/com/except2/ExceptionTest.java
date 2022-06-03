@@ -17,6 +17,28 @@ public class ExceptionTest {
 		}
 	}
 	
+	
+	static void Install() throws InstallException{
+		
+		try {
+			startInstall();
+			copyFile();
+			
+		}catch(SpaceException se) {
+			InstallException ie = new InstallException("설치중 예외발생");
+			ie.initCause(se); // 지정한 예외를 원인으로 등록하는 기능
+			throw ie; // 원인 예외를 반환함
+		}catch(MemoryException me) {
+			InstallException ie = new InstallException("설치중 예외발생");
+			ie.initCause(me); // 지정한 예외를 원인으로 등록하는 기능
+			throw ie; // 원인 예외를 반환함
+		}finally {
+			deleteTempFiles(); //프로그램 설치에 사용된 임시파일을 제거함.
+		}
+	
+	}
+	
+	
 	static void startInstall() throws SpaceException, MemoryException {
 		
 		if(!enoughSpace()) { // 프로그램 설치시 공간이 부족한 경우

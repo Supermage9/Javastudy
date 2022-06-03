@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.hw.two.RFMouse"/>
     <fullyQualifiedTypeName name="com.hw.two.IRF"/>
     <fullyQualifiedTypeName name="java.lang.Record"/>
     <fullyQualifiedTypeName name="record.Sunglmpl"/>
@@ -60,4 +59,5 @@
     <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="com.except2.SpaceException"/>
     <fullyQualifiedTypeName name="com.except2.MemoryException"/>
+    <fullyQualifiedTypeName name="draw.Circle"/>
 </qualifiedTypeNameHistroy>
