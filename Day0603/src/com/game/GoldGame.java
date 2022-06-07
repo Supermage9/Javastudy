@@ -1,9 +1,8 @@
 package com.game;
 
 
-
-
 public class GoldGame {
+	
     public static void main(String[] args) {
         Game obj = new Game();
         do {
@@ -14,12 +13,12 @@ public class GoldGame {
         obj.endprint();
     }
 }
- 
 
- 
 
- 
 
- 
+
+
+
+
 
 
