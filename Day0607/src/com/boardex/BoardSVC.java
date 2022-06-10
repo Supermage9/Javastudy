@@ -7,8 +7,13 @@ public class BoardSVC {
 	
 	ArrayList<BoardVO> boardList;
 	
+//	ArrayList<HashMap<String, String>> boardList;
+	
 	public BoardSVC() {
 		boardList = new ArrayList<BoardVO>();
+//		boardList = new ArrayList<HashMap<String, String>>();
+		
+		
 	}
 	
 	//글쓰기
@@ -40,9 +45,6 @@ public class BoardSVC {
 	private void addArticle(BoardVO boardVO) {
 		boardList.add(boardVO);
 	}
-	
-	
-	
 	
 	
 	
@@ -100,9 +102,6 @@ public class BoardSVC {
 		}else {
 			System.out.println("글이 없습니다.");
 		}
-		
-		
-		
 		
 	}
 	

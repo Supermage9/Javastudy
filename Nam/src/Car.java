@@ -29,13 +29,13 @@ class Car {
 		
 		c2 = (FireEngine)c1; // 조상타입 -> 자손타입 형변환.
 		
-		c2.water();
-		c4.siren();
+		Car c = new Car();
+		FireEngine fe = (FireEngine)c; //형변환에러. java.lang.ClassCastException
+		fe.water(); //컴파일오케이.
+		
 	}
 	
 	
-	
-
 }
 
 class FireEngine extends Car{
@@ -43,8 +43,6 @@ class FireEngine extends Car{
 		System.out.println("물 촥");
 		
 	}
-	
-	
 	
 }
 
