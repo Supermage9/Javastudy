@@ -45,9 +45,24 @@ public class CalendarEx01 {
 		}
 		System.out.println(y+"-"+m+"-"+d+" "+week);
 		
+		//현재 날짜에 1000일을 더하면?
+		now.add(Calendar.DATE, 1000);
+		System.out.printf("%tF%n",now);
 		
+		//2023.6.15
+		now.set(2023, 6-1, 15);
+		System.out.printf("%tF%n",now);
 		
+		//날짜만 변경
+		now.set(Calendar.DATE, 20);
+		System.out.printf("%tF%n",now);
 		
+		//30일 초과시 초과분만큼 날짜 넘어감.
+		now.set(2022, 6-1, 32);
+		System.out.printf("%tF%n",now);
+		
+		int dd = now.getActualMaximum(Calendar.DATE);
+		System.out.println("해당 월의 마지막 날짜 :"+dd);
 		
 	}
 
