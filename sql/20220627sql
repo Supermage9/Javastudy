@@ -565,5 +565,319 @@ as select empno, ename, sal,deptno from emp01 where deptno=10;
 
 select * from tab;
 
+/*  뷰의 사용목적
+     1. 직접접인 테이블 접근을 제한하기 위해 사용
+     2. 복잡한 질의를 쉽게 만들기 위해 사용 
+
+    뷰의 특징
+     뷰는 테이블에 대한 제한을 가지고 테이블의 일정한 부분만 보일 수 있는 가상 테이블임
+     실제 자료를 갖지는 않지만, 뷰를 통해 테이블을 관리할 수 있다.
+     하나의 테이블에 뷰의 개수는 제한이 없다.
+     
+    뷰의 생성과 조회
+     뷰를 생성하기 위해서 테이블 생성과 같이 DDL(create, select)을 사용한다.
+    
+    기본 테이블
+     뷰에 의해 제한적으로 접근해 사용하는 실질적으로 데이터를 저장하고 있는 물리적인 테이블
+*/
+select * from emp01;
+
+select empno, ename, sal, deptno from emp01 where deptno=10;
+
+select * from view_emp10;
+
+/* 뷰의 생성
+    뷰는 테이블처럼 하나의 개체로서 테이블 생성할 때와 유사하게 create view 명령으로 생성한다.
+    
+   생성 형식
+    create [or replace] [force] [noforce] view view_name
+     [ (alias, alias, .....) ]
+     as subquery
+     [with chech option]
+     [with read only];
+     해당 뷰를 통해서는  select 만 기능하며 insert/update/delete를 사용할 수 없다.
+     
+      or replace view
+       - 새로운 뷰를 만들수 있을 뿐만 아니라 기존에 뷰가 존재하더라도 삭제하지 않고
+         새로운 구조의 뷰로 변경할 수 있다.
+         
+      force
+       - 기존 테이블의 존재 여부에 상관없이 뷰를 생성함
+       
+      with chech option
+       - 해당 뷰를 통해서 볼 수 있는 범위 내에서만 update, insert만 가능
+       
+      뷰의 동작 원리
+       - 사용자가 뷰에 대해서 질의를 하면 user_views 에서 뷰에대한 정의를 조회함
+       - 기본테이블에 대한 접근 권한을 살핌
+       - 뷰에 대한 질의를 기본 테이블에 대한 질의로 변경
+       - 기본테이블에 대한 질의를 통해 데이터를 검색함
+       - 검색된 결과를 출력
+       
+      뷰의 종류
+       - 기본 테이블 수에 따라 단순 뷰, 복합 뷰로 나뉨
+       
+       단순 뷰                           복합 뷰 
+       하나의 테이블로 생성                여러개의 테이블로 생성
+       그룹함수 사용이 불가능              그룹함수 사용이 가능
+       DISTINCT 사용이 불가능             DISTINCT 사용이 가능
+       DML이 사용 가능                    DML이 사용 불가능
+*/
+insert into view_emp10 values(8000,'ANGEL',7000,10);
+-- 단순 뷰에서는 DML명령문 처리 결과는 뷰를 정의할 떄 사용한 기본테이블에도 영향을 미친다.
+select * from view_emp10;
+select * from emp01;
+-- 단순 뷰의 컬럼에 별칭 부여
+-- 사원 번호, 사원명, 급여, 부서번호로 구성된 뷰를 작성하되 기본테이블은 emp01로 하고
+-- 컬럼명은 한글로 작성하시오.
+desc view_emp10;
+
+create or replace
+view view_emp10(사원번호,사원명,급여,부서번호)
+as
+select empno,ename,sal,deptno from emp01;
+select * from view_emp10 where 부서번호=10;
+/*
+  오류 이유 : 컬럼을 별칭을 사용해서 뷰를 생성하면 view_emp10의 컬럼 이름만 별칭으로
+             데이터 구조에 반영되고, 기본테이블의 컬럼이름에는 전혀 영향을 미치지 못하기 때문에 오류 발생
+*/
+-- 그룹함수를 사용한 단순뷰
+-- 부서별 급여 총액과 평균을 구하는 작업을 자주 한다면 이를 뷰로 생성해 놓았다가 사용하면 편리하다.
+create view view_sal
+as
+select deptno, sum(sal) as "SalSum", avg(sal) as "SalAvg"
+from emp01
+GROUP BY deptno;
+select * from view_sal;
+
+/*
+  뷰에 관련된 데이터 딕셔너리
+   - 데이터 딕셔너리 USER_VIEWS에 사용자가 생성한 모든 뷰에 대한 정의가 저장되어 있음
+     뷰의 이름을 위한 VIEW_NAME 이란 컬럼과 뷰를 작성할 때 기술한 서브쿼리가 저장되어 있는
+     TEXT 컬럼이 있음
+     
+     검색 : select view_name, text from user_views;
+
+  뷰 삭제
+   - 뷰는 실제가 없는 가상 테이블이기 때문에 뷰를 삭제한다는 것은 
+     user_views 데이터 딕셔너리에 저장되었있는 뷰의 정의를 삭제하는것임
+*/
+select view_name, text from user_views;
+drop view view_sal;
+
+create or replace
+view view_emp10
+as
+select empno, ename, sal, comm, deptno from emp01 where deptno=10;
+
+select * from view_notable;
+
+select * from tab;
+
+-- 기본 테이블 없이 뷰를 생성하기 위한 force 옵션
+-- 기본 테이블이 존재하지 않더라도 뷰를 생성함
+create or replace force view view_notable
+as
+select empno, ename, deptno from emp02
+where deptno=10;
+
+drop view view_notable;
+
+/*
+  with chech option
+   - 뷰 생성시 조건으로 지정한 컬럼값을 변경하지 못하도록하는 것
+*/
+create or replace view view_check20
+as
+select empno, ename, sal, comm, deptno from emp01
+where deptno=20 with check option;
+
+select * from view_check20;
+-- 급여가 5000 이상인 사원을 10번 부서로 이동하는 쿼리문을 작성
+update view_check20 set deptno=10 where sal>5000;
+-- 이유 : 부서번호에 옵션을 지정해서 이 뷰를 통해서는 부서번호 변경 불가
+
+/* with read only : 뷰를 통해서는 기본 테이블의 어떤 컬럼에 대해서도 내용을 변경할수 없다
+
+
+   with check option과 with read only의 차이점
+    
+    with check option은 조건에 사용한 컬럼의 값을 수정하지 못하게 하는 것이고,
+    with read only는 기본 테이블의 모두를 수정하지 못하게 하는것.
+*/
+create or replace view view_read30
+as
+select empno, ename, sal, comm, deptno
+from emp01
+where deptno=30 with read only;
+
+select * from view_read30;
+update view_read30 set comm=1000;
+
+/*
+  뷰 활용하기
+  
+   사원중에서 입사일이 빠른 사람 5명(top-5)만을 얻는 질의문을 작성
+   ROWNUM 컬럼을 이용
+    - ROWNUM 컬럼은 오라클에서 내부적으로 부여되는데 insert문에 의해 입력한
+      순서에 따라 1씩 증가되면서 값이 지정됨
+*/
+
+create or replace view view_hire
+as
+select empno, ename, hiredate from emp01
+order by hiredate;
+select ROWNUM empno, ename, hiredate from view_hire;
+select ROWNUM empno, ename, hiredate from view_hire where rownum <=5;
+
+/*
+   시퀀스
+     - PRIMARY KEY로 지정한 컬럼에 일련번호를 자동으로 부여받기 위해
+       시퀀스를 활용함
+     
+     시퀀스 생성
+       - 시퀀스는 유일(UNIQUE)한 값을 생성해주는 오라클 객체이다.
+       - 시퀀스를 생성하면 기본키와 같이 순차적으로 증가하는 을 자동적으로 생성할수 있게 함
+       
+     시퀀스 생성 형식
+       create sequence 시퀀스명
+       1. start with n
+       2. increment by n
+       3. maxvalue n | nomaxvalue
+       4. minvalue n | nominvalue
+       5. cycle | nocycle
+       6. cache n | nocache;
+       
+     1. start with n
+       시퀀스의 시작 값을 지정함. n을 1로 지정하면 1부터 순차적으로 시퀀스 번호가 증가
+       
+     2. increment by n
+       시퀀스의 증가 값을 의미. n을 2로 하면 2씩 증가
+       시작은 1, 증가는 2로 하게 되면 1,3,5,7 ...
+      
+     3. maxvalue n | nomaxvalue
+       시퀀스가 증가할 수 있는 최대값. nomax는 말그대로 끝이 없으므로 무한대.
+       
+     4. minvalue n | nominvalue  
+       시퀀스의 최소값. 기본값은 1. nomin은 무한소를 의미
+        
+     5.  cycle | nocycle
+       지정한 시퀀스 값이 최대값까지 증가가 완료되면 다시 최소값으로 
+       시퀀스를 시작하도록  cycle로 지정함. nocycle은 최대값을 넘어서면 오류가 발생함.
+     
+     6. cache n | nocache
+       오라클 서버가 미리 지정하고 메모리에 유지할 값의 수로 디폴트값은 2임.
+*/
+-- 시작값이 1이고 1씩 증가하고, 최대값이 100000 이 되는 시퀀스 emp_seq 생성
+create sequence emp_seq
+start with 1
+increment by 1
+maxvalue 100000;
+
+select * from tab;
+
+drop table emp01;
+
+create table emp01 as select empno,ename,hiredate from emp where 1=0;
+
+select * from emp01;
+insert into emp01 values(emp_seq.nextval,'JULIA',sysdate);
+insert into emp01 values(emp_seq.nextval,'JULIA',sysdate);
+
+-- 현재 시퀀스 값을 반환함
+select emp_seq.currval from dual;
+
+-- 현재 시퀀스의 다음값을 반환
+select emp_seq.nextval from dual;
+
+/*
+  nextval, currval 을 사용할 수 있는 경우
+    - 서브쿼리가 아닌 select 문
+    - insert 문의 select 절
+    - insert 문 values 절
+    - update 문 set 절
+    
+   nextval, currval 을 사용할 수 없는 경우
+    - view 의 select 절
+    - distinct 키워드가 있는 select 절
+    - group by, having, order by 절이 있는 select 문
+    - select, delete, update의 서브쿼리
+    - create table, alter table 명령의 기본값
+*/
+
+drop table dept01;
+
+create table dept01
+as
+select * from dept where 1=0;
+select * from dept01;
+
+-- 시퀀스 작성 : 10부터 10씩 증가하면서 최대 30까지의 값을 갖는 시퀀스 생성 DEPT_SEQ
+create sequence dept_seq
+start with 10
+increment by 10
+maxvalue 30;
+
+insert into dept01 values(dept_seq.nextval, 'ACCOUNTING','NEW YORK');
+insert into dept01 values(dept_seq.nextval, 'RESERCH','DALLAS');
+insert into dept01 values(dept_seq.nextval, 'SALES','CHICAGO');
+
+/*
+  시퀀스에 대한 데이터 딕셔너리 USER_SEQUENCES
+  생성된 시퀀스의 정보를 확인하기 위한 데이터 딕셔너리로 USER_SEQUENCE가 있다.
+*/
+select sequence_name, min_value, max_value, increment_by,cycle_flag from USER_SEQUENCES;
+
+
+/*
+   시퀀스 수정
+     alter 사용
+       1. start with n
+       2. increment by n
+       3. maxvalue n | nomaxvalue
+       4. minvalue n | nominvalue
+       5. cycle | nocycle
+       6. cache n | nocache;
+*/
+
+alter sequence dept_seq
+maxvalue 100000;
+
+select * from dept01;
+
+-- 시퀀스 삭제 : 시퀀스를 삭제하려면 drop sequence 시퀀스명 을 사용, 삭제해도 이미 만들어진 데이터는 영향x
+drop sequence emp_seq;
+
+--------------------------------- END DDL, DML, DCL ----------------------------
+------------------------- 데이터베이스 백업 및 복원 --------------------------------
+/*
+  오라클에서 백업하는 가장 일반적인 방법
+  Export, Import를 사용함
+  
+  데이터베이스 백업
+  1)백업
+    데이터베이스 백업
+    ex) exp 유저/비밀번호 file = 파일명.dmp log = 로그파일명.log
+    
+    위의 명령을 실행하면 파일명.dmp파일과 파일명.log파일이 생김
+    
+  2)복원
+    ex) imp 유저/비밀번호 file = 복원할 파일명.dmp log = 로그파일명.log
+     
+     주의사항
+      복원에는 imp를 실행하고 절차에 따르면 되고
+      마지막쯤에 dmp파일을 만든 유저를 다시 물어봄
+      
+  백업
+     exp scott/tiger file=c:\ora\scott_data.dmp log=c:\ora\scott_data.log
+     
+  복원
+     c:\ora\scott_data.dmp
+*/
+
+
+
+
+
 
 
