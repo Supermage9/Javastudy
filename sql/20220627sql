@@ -872,10 +872,25 @@ drop sequence emp_seq;
      exp scott/tiger file=c:\ora\scott_data.dmp log=c:\ora\scott_data.log
      
   복원
+     imp
+     계정입력
+     
      c:\ora\scott_data.dmp
+     
+  테이블만 백업
+    exp scott/tiger tables=test file=c:\ora\scott_test.dmp log=c:\ora\scott_test_exp.log
+     
 */
 
-
+create table department (
+deptno number(3) not null,
+dname varchar2(30) not null,
+college number(3) not null,
+loc varchar2(15) not null,
+constraint department_pk primary key(deptno)
+);
+commit;
+select * from department;
 
 
 

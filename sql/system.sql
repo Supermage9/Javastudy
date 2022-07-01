@@ -15,3 +15,5 @@ create user backupuser IDENTIFIED by backup1234 default TABLESPACE scott_data;
 grant connect, resource to backupuser;
 
 commit;
+
+
