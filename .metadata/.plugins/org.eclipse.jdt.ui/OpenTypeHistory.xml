@@ -1,15 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<typeInfoHistroy>
-    <typeInfo handle="=Day0525/src&lt;com.inter{InterEx.java[InterEx" modifiers="513" timestamp="1653457081935"/>
-    <typeInfo handle="=Day0525/src&lt;com.inter.ex{Inter3.java[Inter3" modifiers="513" timestamp="1653458461253"/>
-    <typeInfo handle="=Day0525/src&lt;com.inter.ex{Inter2.java[Inter2" modifiers="513" timestamp="1653456914032"/>
-    <typeInfo handle="=Day0526/src&lt;com.hw.two{IRF.java[IRF" modifiers="513" timestamp="1653527802232"/>
-    <typeInfo handle="=Day0526/src&lt;com.member{Action.java[Action" modifiers="513" timestamp="1653631954842"/>
-    <typeInfo handle="=Day0607/src&lt;com.arrayex{Score.java[Score" modifiers="513" timestamp="1654577664391"/>
-    <typeInfo handle="=Day0607/C:\/Devtools\/eclipse\/plugins\/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_16.0.1.v20210528-1205\/jre\/lib\/jrt-fs.jar`java.base=/module=/true=/=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/16\/docs\/api\/=/&lt;java.util.concurrent(ScheduledExecutorService.class[ScheduledExecutorService" modifiers="1537" timestamp="1622171528000"/>
-    <typeInfo handle="=Day0607/src&lt;com.vectorexam{Score.java[Score" modifiers="513" timestamp="1654653886437"/>
-    <typeInfo handle="=Day0607/C:\/Devtools\/eclipse\/plugins\/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_16.0.1.v20210528-1205\/jre\/lib\/jrt-fs.jar`java.base=/module=/true=/=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/16\/docs\/api\/=/&lt;java.util.concurrent(ScheduledFuture.class[ScheduledFuture" modifiers="1537" timestamp="1622171528000"/>
-    <typeInfo handle="=Day0607/src&lt;com.mapex.mscore{Score.java[Score" modifiers="513" timestamp="1654743808742"/>
-    <typeInfo handle="=Day0614/C:\/Devtools\/eclipse\/plugins\/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_16.0.1.v20210528-1205\/jre\/lib\/jrt-fs.jar`java.base=/module=/true=/=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/16\/docs\/api\/=/&lt;java.io(Serializable.class[Serializable" modifiers="1537" timestamp="1622171528000"/>
-    <typeInfo handle="=Day0616/C:\/Devtools\/eclipse\/plugins\/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_16.0.1.v20210528-1205\/jre\/lib\/jrt-fs.jar`java.base=/module=/true=/=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/16\/docs\/api\/=/&lt;java.lang(Runnable.class[Runnable" modifiers="1537" timestamp="1622171528000"/>
-</typeInfoHistroy>
+<typeInfoHistroy/>
