@@ -42,7 +42,6 @@
     <fullyQualifiedTypeName name="javax.swing.table.DefaultTableModel"/>
     <fullyQualifiedTypeName name="javax.swing.JButton"/>
     <fullyQualifiedTypeName name="javax.swing.JLabel"/>
-    <fullyQualifiedTypeName name="javax.swing.JPanel"/>
     <fullyQualifiedTypeName name="com.swingex.DrawingPanel"/>
     <fullyQualifiedTypeName name="java.awt.BorderLayout"/>
     <fullyQualifiedTypeName name="java.awt.Color"/>
@@ -60,4 +59,5 @@
     <fullyQualifiedTypeName name="java.lang.Thread"/>
     <fullyQualifiedTypeName name="java.lang.InterruptedException"/>
     <fullyQualifiedTypeName name="javax.swing.JFrame"/>
+    <fullyQualifiedTypeName name="javax.swing.JPanel"/>
 </qualifiedTypeNameHistroy>
